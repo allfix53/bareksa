@@ -1,4 +1,5 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
+import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import TopNavBar from '../TopNavBar'
 
@@ -8,20 +9,25 @@ export default function DefaultLayout({ children }) {
     setDate(new Date(Date.now()).toLocaleString())
   }, [])
   return (
-    <Box bg="white" w="full">
-      <TopNavBar />
-      <Box
-        bg="gray.100"
-        p={2}
-        textAlign="right"
-        fontSize="sm"
-        fontWeight="semibold"
-      >
-        {date}
+    <>
+      <Head>
+        <title>Bareksa Test</title>
+      </Head>
+      <Box bg="white" w="full">
+        <TopNavBar />
+        <Box
+          bg="gray.100"
+          p={2}
+          textAlign="right"
+          fontSize="sm"
+          fontWeight="semibold"
+        >
+          {date}
+        </Box>
+        <Box px={2} py={4} bg="white">
+          {children}
+        </Box>
       </Box>
-      <Box px={2} py={4} bg="white">
-        {children}
-      </Box>
-    </Box>
+    </>
   )
 }

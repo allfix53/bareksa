@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Spinner } from '@chakra-ui/react'
-import { Pie, PieChart, ResponsiveContainer } from 'recharts'
+import { Pie, PieChart, ResponsiveContainer, Cell } from 'recharts'
 
 export default function ConversionCard({ isLoading, error, data }) {
   if (error) return <>Error fetching data.</>
@@ -20,6 +20,8 @@ export default function ConversionCard({ isLoading, error, data }) {
       })
     )
 
+    const colors = ['#725E9C', '#5C8F94', '#EBA45E', '#E4EAEB']
+
     return (
       <Box h={300}>
         <ResponsiveContainer>
@@ -28,7 +30,13 @@ export default function ConversionCard({ isLoading, error, data }) {
               data={res}
               dataKey="conversion_revenue"
               nameKey="conversion_item"
-            />
+              fillRule="evenodd"
+              // fill={colors[Math.floor(Math.random() * (5 - 1 + 1) + 1)]}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={colors[index]} />
+              ))}
+            </Pie>
           </PieChart>
         </ResponsiveContainer>
       </Box>
