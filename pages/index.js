@@ -11,7 +11,7 @@ export default function Home() {
   const { isLoading, error, data } = useQuery(
     'summary',
     () => getSummaryDashboardData().then((res) => res),
-    { refetchInterval: 3000 }
+    { refetchInterval: 30000 }
   )
 
   if (error) return 'An error has occurred: ' + error.message

@@ -32,7 +32,7 @@ export default function RevenueCard({ isLoading, error, data }) {
 
     return (
       <Box>
-        <Box h={300} fontSize="xs">
+        <Box h={250} fontSize="xs">
           <ResponsiveContainer>
             <AreaChart
               data={res}
@@ -46,15 +46,8 @@ export default function RevenueCard({ isLoading, error, data }) {
               </defs>
               <XAxis dataKey="due_date" />
               <YAxis />
-              <CartesianGrid strokeDasharray="3 3" />
+              <CartesianGrid strokeDasharray="2 2" />
               <Tooltip />
-              <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
-              <ReferenceLine
-                y={4000}
-                label="Max"
-                stroke="red"
-                strokeDasharray="3 3"
-              />
               <Area
                 type="monotone"
                 dataKey="conversion_revenue"
@@ -81,7 +74,7 @@ export default function RevenueCard({ isLoading, error, data }) {
   }
 
   return (
-    <Box p={2} border="1px" rounded={4} borderColor="gray.300" w="full">
+    <Box p={6} border="1px" rounded={4} borderColor="gray.300" w="full">
       <Heading as="h2" fontSize="lg">
         Revenue
       </Heading>

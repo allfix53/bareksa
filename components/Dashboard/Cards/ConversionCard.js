@@ -1,5 +1,12 @@
-import { Box, Flex, Heading, Spinner, Tooltip } from '@chakra-ui/react'
-import { Pie, PieChart, ResponsiveContainer, Cell, Legend } from 'recharts'
+import { Box, Flex, Heading, Spinner } from '@chakra-ui/react'
+import {
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Cell,
+  Legend,
+  Tooltip,
+} from 'recharts'
 
 export default function ConversionCard({ isLoading, error, data }) {
   if (error) return <>Error fetching data.</>
@@ -30,14 +37,13 @@ export default function ConversionCard({ isLoading, error, data }) {
               data={res}
               dataKey="conversion_revenue"
               nameKey="conversion_item"
-              fillRule="evenodd"
-              // fill={colors[Math.floor(Math.random() * (5 - 1 + 1) + 1)]}
+              outerRadius={100}
             >
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index]} />
               ))}
             </Pie>
-            {/* <Tooltip /> */}
+            <Tooltip />
             <Legend iconType="circle" />
           </PieChart>
         </ResponsiveContainer>
@@ -46,7 +52,7 @@ export default function ConversionCard({ isLoading, error, data }) {
   }
 
   return (
-    <Box p={2} border="1px" rounded={4} borderColor="gray.300" w="full">
+    <Box p={6} border="1px" rounded={4} borderColor="gray.300" w="full">
       <Heading as="h2" fontSize="lg">
         Conversion
       </Heading>
